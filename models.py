@@ -66,7 +66,7 @@ class DaftarRoti:
     def create(nama_roti, id_kategori, deskripsi, harga, stok):
         sql = """
             INSERT INTO daftar_roti (nama_roti, id_kategori, deskripsi, harga, stok)
-            VALUES (%s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s)
         """
 
         db.query(sql, (nama_roti, id_kategori, deskripsi, harga, stok))
@@ -96,7 +96,7 @@ class DaftarRoti:
     def update(id_roti, nama_roti, id_kategori, deskripsi, harga, stok):
         sql = """
             UPDATE daftar_roti
-            SET nama_roti = %s, id_kategori = %s, harga = %s, stok = %s
+            SET nama_roti = %s, id_kategori = %s, deskripsi = %s, harga = %s, stok = %s
             WHERE id_roti = %s
         """
         db.query(sql, (nama_roti, id_kategori, deskripsi, harga, stok, id_roti))
