@@ -12,7 +12,7 @@
   <body>
     <div class="container mt-5">
       <h3 class="mb-4">Tambah Daftar Roti</h3>
-      <form action="{{ url_for('insert_daftar') }}" method="POST">
+      <form action="{{ url_for('insert_roti') }}" method="POST">
         <div class="mb-3">
           <label>Nama Roti</label>
           <input type="text" name="nama_roti" class="form-control" required />
@@ -27,7 +27,9 @@
             required
           >
             <option value="">-- pilih Kategori --</option>
-            {{% endfor %}}
+            {% for k in kategori %}
+              <option value="{{ k.id_kategori }}">{{ k.nama_kategori }}</option>
+            {% endfor %}
           </select>
         </div>
 
