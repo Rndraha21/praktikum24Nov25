@@ -84,7 +84,7 @@ class DaftarRoti:
     @staticmethod
     def get_by_id(id_roti):
         sql = "SELECT * FROM daftar_roti WHERE id_roti = %s"
-        
+
         return db.fetchone(sql, (id_roti,))
 
     @staticmethod
@@ -107,3 +107,23 @@ class DaftarRoti:
         sql = "DELETE FROM daftar_roti WHERE id_roti = %s"
         db.query(sql, (id_roti,))
         return True
+
+
+class User:
+    @staticmethod
+    def create_user(username, password, role):
+        sql = """
+            INSERT INTO users (username, password, role)
+            VALUES  (%s, %s, %s)
+        """
+        db.query(sql, (username, password, role))
+        return True
+
+    @staticmethod
+    def check_login(username, password):
+        sql = "SELECT * FROM users WHERE username = %s"
+        user = db.fetchone(sql, (username,))
+
+        if user and user["password"] == password:
+            return user
+        return None
